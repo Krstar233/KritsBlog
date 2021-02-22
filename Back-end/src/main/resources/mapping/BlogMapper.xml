@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="fun.krits.mapper.BlogMapper">
+    <insert id="insert" parameterType="fun.krits.entity.Blog" keyProperty="id" useGeneratedKeys="true">
+        insert into t_blog (title, date, content, tag, category)
+        values (#{title}, #{date}, #{content}, #{tag}, #{category})
+    </insert>
+    <update id="update" parameterType="fun.krits.entity.Blog">
+        update t_blog set title=#{title}, date=#{date}, content=#{content}, tag=#{tag}, category=#{category}
+        where id=#{id}
+    </update>
+    <delete id="deleteById" parameterType="integer">
+        delete from t_blog where id=#{id}
+    </delete>
+    <select id="selectById" resultType="fun.krits.entity.Blog" parameterType="Integer">
+        select * from t_blog where id=#{id}
+    </select>
+    <select id="selectAll" resultType="fun.krits.entity.Blog">
+        select * from t_blog
+    </select>
+</mapper>
